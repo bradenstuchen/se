@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>About - Self Employed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alte+Haas+Grotesk:wght@400;700&family=CMU+Serif+Extra:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alte Haas Grotesk', sans-serif;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.06) 2px,
+                    rgba(0,0,0,0.06) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.04) 2px,
+                    rgba(0,0,0,0.04) 4px
+                );
+            background-size: 4px 4px;
+            animation: grain 0.2s steps(10) infinite;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        @keyframes grain {
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-1px, -1px); }
+            20% { transform: translate(1px, -1px); }
+            30% { transform: translate(-1px, 1px); }
+            40% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, 0); }
+            60% { transform: translate(1px, 0); }
+            70% { transform: translate(0, -1px); }
+            80% { transform: translate(0, 1px); }
+            90% { transform: translate(-1px, -1px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .wordmark {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-family: 'Alte Haas Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: black;
+            opacity: 0.25;
+            z-index: 1001;
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            background: white;
+            border: 2px solid black;
+            padding: 45px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: black;
+            margin-bottom: 25px;
+        }
+
+        .message {
+            font-family: 'CMU Serif Extra', serif;
+            font-size: 1.1rem;
+            color: black;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-weight: 400 !important;
+        }
+
+        .subtitle {
+            font-family: 'CMU Serif Extra', serif;
+            font-size: 0.9rem;
+            color: black;
+            margin-bottom: 30px;
+            font-weight: 400 !important;
+        }
+
+        .highlight {
+            font-family: 'Alte Haas Grotesk', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 15px;
+            border: 2px solid black;
+            background: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background: black;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 20px;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wordmark">SELF EMPLOYED</div>
+    <div class="container">
+        <div class="title">About</div>
+        <div class="message">Being <span class="highlight">SELF EMPLOYED</span> is more fun anyway...</div>
+        <div class="subtitle">A production co.</div>
+        <a href="index.html" class="back-button">← Back</a>
+    </div>
+</body>
+</html>

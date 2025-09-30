@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Self Employed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alte+Haas+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alte Haas Grotesk', sans-serif;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.06) 2px,
+                    rgba(0,0,0,0.06) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.04) 2px,
+                    rgba(0,0,0,0.04) 4px
+                );
+            background-size: 4px 4px;
+            animation: grain 0.2s steps(10) infinite;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        @keyframes grain {
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-1px, -1px); }
+            20% { transform: translate(1px, -1px); }
+            30% { transform: translate(-1px, 1px); }
+            40% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, 0); }
+            60% { transform: translate(1px, 0); }
+            70% { transform: translate(0, -1px); }
+            80% { transform: translate(0, 1px); }
+            90% { transform: translate(-1px, -1px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .wordmark {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-family: 'Alte Haas Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: black;
+            opacity: 0.25;
+            z-index: 1001;
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+
+        .container {
+            background: white;
+            border: 2px solid black;
+            padding: 45px 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: normal;
+            color: black;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid black;
+            font-size: 1rem;
+            font-weight: 700;
+            background: white;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:focus {
+            outline: none;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .button {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid black;
+            background: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            display: block;
+        }
+
+        .button:hover {
+            background: black;
+            color: white;
+        }
+
+        /* Color themes */
+        .theme-red {
+            background-color: #ffebee !important;
+        }
+
+        .theme-red .container {
+            border-color: #f44336;
+        }
+
+        .theme-red .form-label {
+            color: #d32f2f;
+        }
+
+        .theme-red .dropdown {
+            border-color: #f44336;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f44336' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        }
+
+        .theme-red .button {
+            border-color: #f44336;
+            color: #d32f2f;
+        }
+
+        .theme-red .button:hover {
+            background: #f44336;
+            color: white;
+        }
+
+        .theme-red .wordmark {
+            color: #d32f2f;
+        }
+
+        .theme-blue {
+            background-color: #e3f2fd !important;
+        }
+
+        .theme-blue .container {
+            border-color: #2196f3;
+        }
+
+        .theme-blue .form-label {
+            color: #1976d2;
+        }
+
+        .theme-blue .dropdown {
+            border-color: #2196f3;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232196f3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        }
+
+        .theme-blue .button {
+            border-color: #2196f3;
+            color: #1976d2;
+        }
+
+        .theme-blue .button:hover {
+            background: #2196f3;
+            color: white;
+        }
+
+        .theme-blue .wordmark {
+            color: #1976d2;
+        }
+
+        .theme-green {
+            background-color: #e8f5e8 !important;
+        }
+
+        .theme-green .container {
+            border-color: #4caf50;
+        }
+
+        .theme-green .form-label {
+            color: #388e3c;
+        }
+
+        .theme-green .dropdown {
+            border-color: #4caf50;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234caf50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        }
+
+        .theme-green .button {
+            border-color: #4caf50;
+            color: #388e3c;
+        }
+
+        .theme-green .button:hover {
+            background: #4caf50;
+            color: white;
+        }
+
+        .theme-green .wordmark {
+            color: #388e3c;
+        }
+
+        .theme-purple {
+            background-color: #f3e5f5 !important;
+        }
+
+        .theme-purple .container {
+            border-color: #9c27b0;
+        }
+
+        .theme-purple .form-label {
+            color: #7b1fa2;
+        }
+
+        .theme-purple .dropdown {
+            border-color: #9c27b0;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239c27b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        }
+
+        .theme-purple .button {
+            border-color: #9c27b0;
+            color: #7b1fa2;
+        }
+
+        .theme-purple .button:hover {
+            background: #9c27b0;
+            color: white;
+        }
+
+        .theme-purple .wordmark {
+            color: #7b1fa2;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wordmark">SELF EMPLOYED</div>
+    <div class="container">
+        <div class="form-group">
+            <label for="currentEmployer" class="form-label">Are you currently employed?</label>
+            <select id="currentEmployer" class="dropdown">
+                <option value="">Select an option...</option>
+                <option value="red">SELF EMPLOYED</option>
+                <option value="blue">SELF EMPLOYED</option>
+                <option value="green">SELF EMPLOYED</option>
+                <option value="purple">SELF EMPLOYED</option>
+            </select>
+        </div>
+        
+        <div class="buttons">
+            <a href="https://imdb.com" target="_blank" class="button">IMDB</a>
+            <a href="projects.html" class="button">Projects</a>
+            <a href="mailto:braden@elsewhere.us" class="button">Contact</a>
+            <a href="about.html" class="button">About</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('currentEmployer').addEventListener('change', function() {
+            const selectedColor = this.value;
+            const body = document.body;
+            
+            // Validate color input to prevent XSS
+            const validColors = ['red', 'blue', 'green', 'purple'];
+            
+            // Remove all existing theme classes
+            body.classList.remove('theme-red', 'theme-blue', 'theme-green', 'theme-purple');
+            
+            // Add the selected theme class only if valid
+            if (selectedColor && validColors.includes(selectedColor)) {
+                body.classList.add('theme-' + selectedColor);
+            }
+        });
+    </script>
+</body>
+</html>
